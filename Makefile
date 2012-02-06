@@ -2,13 +2,13 @@
 CC     = gcc
 CFLAGS =  -ansi -Wall -g
 
-all: calcdist
+all: TrieTest
 
-calcdist: trie.o GetDistance.o
-	$(CC) $(CFLAGS) -o calcdist trie.o GetDistance.o
+TrieTest: trie.o main.o
+	$(CC) $(CFLAGS) -o TrieTest trie.o main.o
 
-GetDistance.o: GetDistance.c 
-	$(CC) $(CFLAGS) -g  -c GetDistance.c
+main.o: main.c 
+	$(CC) $(CFLAGS) -g  -c main.c
 
 
 trie.o: trie.c trie.h
@@ -17,5 +17,5 @@ trie.o: trie.c trie.h
 
 ##This is not the best way to do this
 clean: 
-	rm -f trie.o calcdist GetDistance.o  *~
+	rm -f trie.o TrieTest main.o  *~
 
