@@ -5,7 +5,7 @@
 #include "trie.h"
 
 
-int Insert_In_Trie (Trie_Type trie , char  url[]){
+int Insert_In_Trie (Trie_Type trie , char  url[], char* delimiter){
   
   Trie_Type  temp;
   Trie_Type  parent;
@@ -16,29 +16,24 @@ int Insert_In_Trie (Trie_Type trie , char  url[]){
   int num_domains = 0;
   
   /* Creates the substring */
-  /* Error when usning a char* 1st arg  */
-  fix[0]=strtok(url,"//");
+  /* Test when string does not have delimiter */
+  fix[0]=strtok(url,delimiter);
   if(fix[0]==NULL){
     printf("URL doesn't have a  .\n");
     return 0;
   }
 
 
-  fix[1]=strtok(url,".");
+  fix[1]=strtok(url,delimiter);
   num_domains++;
   for(loop=2;loop<NUM;loop++){
-    fix[loop]=strtok(NULL,".");
+    fix[loop]=strtok(NULL,delimiter);
     num_domains++;
     if(fix[loop]==NULL){
       break;
     }
   }
    
-  /* Process the gov remove the folder and file extentions*/
-  /* gov/something/something/file.html = gov*/
-
-  fix[num_domains-1] = "gov";
- 
   parent = trie;
   temp = trie->child;
   for(counter =  num_domains-1;counter > 0;){ 

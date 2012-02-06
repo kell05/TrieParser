@@ -20,7 +20,7 @@ Trie_Type Create_Trie(void);
 
 /*Inserts a postfix into the Trie returns 1 if successful else 0*/
 
-int Insert_In_Trie (Trie_Type trie , char  postfix[]);
+int Insert_In_Trie (Trie_Type trie , char  postfix[], char* delimiter);
 
 
 /* Destroys the Trie returns 1 if successful else 0 */ 
